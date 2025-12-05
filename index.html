@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vasim Ghosi – Mobile App Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Vasim Ghosi, Flutter & React Native mobile app developer." />
+  <style>
+    :root {
+      --bg: #050b10;
+      --bg-alt: #07131c;
+      --primary: #2e8b8b;
+      --primary-soft: rgba(46, 139, 139, 0.15);
+      --text: #f3f5f7;
+      --muted: #9ba3af;
+      --card: #0b1822;
+      --border: #1f2933;
+      --radius-xl: 18px;
+      --radius-full: 999px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top left, #102a43 0, #050b10 45%);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 18px 48px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 20% 0, #42e6a4 0, #2e8b8b 38%, #064663 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: #e5f7ff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .logo-subtitle {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .top-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .chip {
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(156, 163, 175, 0.4);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .chip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+    }
+
+    .chip-primary {
+      border-color: rgba(46, 139, 139, 0.9);
+      color: #e0f2f1;
+      background: rgba(46, 139, 139, 0.18);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 32px;
+    }
+
+    @media (max-width: 840px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .top-links {
+        justify-content: flex-start;
+      }
+    }
+
+    /* Hero */
+    .hero-title {
+      font-size: 32px;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .hero-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .hero-highlight span {
+      font-weight: 600;
+      color: #e5f7ff;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 18px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--muted);
+      border: 1px solid rgba(31, 41, 55, 0.7);
+    }
+
+    .pill-strong {
+      border-color: rgba(46, 139, 139, 0.9);
+      color: #e0f2f1;
+      background: var(--primary-soft);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+      border-radius: var(--radius-full);
+      padding: 10px 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, background 0.12s ease-out;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #42e6a4, #2e8b8b);
+      color: #02131a;
+      box-shadow: var(--shadow-soft);
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      border: 1px solid rgba(75, 85, 99, 0.8);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(31, 41, 55, 0.95);
+    }
+
+    .hero-meta {
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--primary);
+    }
+
+    /* Right Column */
+    .card {
+      background: linear-gradient(145deg, var(--card), #050b10);
+      border-radius: 22px;
+      padding: 18px 18px 18px;
+      border: 1px solid rgba(148, 163, 184, 0.32);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .badge {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--muted);
+    }
+
+    .badge span {
+      color: #e5f7ff;
+      font-weight: 600;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      font-size: 12px;
+    }
+
+    .skills-group-title {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .skills-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skills-chip {
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--muted);
+      border: 1px solid rgba(31, 41, 55, 0.7);
+    }
+
+    .section {
+      margin-top: 40px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 840px) {
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project-card {
+      background: rgba(10, 18, 28, 0.95);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(30, 64, 175, 0.5);
+      padding: 12px 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .project-thumb {
+      border-radius: 14px;
+      overflow: hidden;
+      background: #020617;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .project-header-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .project-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .project-meta {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .project-link {
+      font-size: 11px;
+      margin-top: 2px;
+    }
+
+    .project-link a {
+      color: #7dd3fc;
+      text-decoration: none;
+    }
+
+    .project-link a:hover {
+      text-decoration: underline;
+    }
+
+    .pill-small {
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 10px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(51, 65, 85, 0.95);
+      color: var(--muted);
+    }
+
+    .contact-card {
+      margin-top: 24px;
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: var(--radius-xl);
+      padding: 14px 14px 16px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 640px) {
+      .contact-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .contact-main {
+      color: var(--muted);
+    }
+
+    .contact-main strong {
+      color: var(--text);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .contact-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 26px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">
+        <div class="logo-badge">VG</div>
+        <div class="logo-text">
+          <div class="logo-title">Vasim Ghosi</div>
+          <div class="logo-subtitle">Mobile App Developer</div>
+        </div>
+      </div>
+      <div class="top-links">
+        <div class="chip">
+          <span class="chip-dot"></span>
+          Available for remote work
+        </div>
+        <div class="chip chip-primary">
+          4+ yrs · Flutter & React Native
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- LEFT – HERO / ABOUT -->
+      <section>
+        <div class="hero-highlight">
+          Building real-world apps in <span>Flutter & React Native</span>
+        </div>
+        <h1 class="hero-title">
+          I design & build production-ready mobile apps that solve real problems.
+        </h1>
+        <p class="hero-subtitle">
+          I’m a mobile app developer focused on Flutter, React Native, and Firebase.
+          I’ve worked on marketplaces, multi-service super apps, booking platforms,
+          and Islamic utility apps with clean UI and scalable architecture.
+        </p>
+
+        <div class="pill-row">
+          <div class="pill pill-strong">Flutter · GetX · Firebase</div>
+          <div class="pill">React Native · REST APIs</div>
+          <div class="pill">Clean architecture & modular apps</div>
+        </div>
+
+        <div class="cta-row">
+          <!-- Update href with your email & LinkedIn/GitHub -->
+          <a class="btn btn-primary" href="mailto:YOUR_EMAIL_HERE">
+            Contact me
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank">
+            View GitHub
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <span><span class="dot"></span> India (IST)</span>
+          <span>Experienced with production apps on Play Store</span>
+        </div>
+      </section>
+
+      <!-- RIGHT – SKILLS CARD -->
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Tech Snapshot</div>
+            <div class="card-subtitle">Core tools I work with</div>
+          </div>
+          <div class="badge">
+            <span>Mobile-first</span> · End-to-end
+          </div>
+        </div>
+        <div class="skills-grid">
+          <div>
+            <div class="skills-group-title">Mobile</div>
+            <div class="skills-chips">
+              <div class="skills-chip">Flutter (Dart)</div>
+              <div class="skills-chip">React Native</div>
+              <div class="skills-chip">GetX</div>
+              <div class="skills-chip">Animations</div>
+            </div>
+          </div>
+          <div>
+            <div class="skills-group-title">Backend / Data</div>
+            <div class="skills-chips">
+              <div class="skills-chip">Firebase (Auth, Firestore)</div>
+              <div class="skills-chip">Push Notifications</div>
+              <div class="skills-chip">REST APIs</div>
+              <div class="skills-chip">SQLite</div>
+            </div>
+          </div>
+          <div>
+            <div class="skills-group-title">Architecture</div>
+            <div class="skills-chips">
+              <div class="skills-chip">Modular apps</div>
+              <div class="skills-chip">Clean structure</div>
+              <div class="skills-chip">Reusable UI</div>
+            </div>
+          </div>
+          <div>
+            <div class="skills-group-title">Tools</div>
+            <div class="skills-chips">
+              <div class="skills-chip">Git & GitHub</div>
+              <div class="skills-chip">Android Studio</div>
+              <div class="skills-chip">Figma to app</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- PROJECTS -->
+    <section class="section">
+      <h2 class="section-title">Selected Projects</h2>
+      <p class="section-subtitle">
+        A few live apps and product experiences I’ve contributed to.
+      </p>
+
+      <div class="projects">
+        <!-- Guru Marketplace -->
+        <article class="project-card">
+          <div class="project-thumb">
+            <!-- Replace SRC with a screenshot or icon URL from play store -->
+            <!-- Example: <img src="YOUR_GURU_SCREENSHOT_URL" alt="Guru Marketplace app UI" /> -->
+            <span>Guru Marketplace – add Play Store screenshot here</span>
+          </div>
+          <div class="project-header-row">
+            <div>
+              <div class="project-title">Guru Marketplace</div>
+              <div class="project-meta">
+                Freelancer–employer marketplace · React Native
+              </div>
+              <div class="project-link">
+                <a href="https://play.google.com/store/apps/details?id=com.guru.marketplace" target="_blank">
+                  Open app (com.guru.marketplace)
+                </a>
+                <br />
+                <a href="https://play.google.com/store/apps/details?id=com.guru.flmarketplace" target="_blank">
+                  Open app (com.guru.flmarketplace)
+                </a>
+              </div>
+            </div>
+            <div class="pill-small">Production</div>
+          </div>
+          <p class="project-meta">
+            Worked on a Guru.com-style mobile experience connecting employers
+            and freelancers, focusing on clean navigation, profile flows,
+            proposals, and smooth UX for both sides.
+          </p>
+        </article>
+
+        <!-- Super App -->
+        <article class="project-card">
+          <div class="project-thumb">
+            <!-- Replace SRC with a screenshot or icon URL from play store -->
+            <!-- Example: <img src="YOUR_SUPERAPP_SCREENSHOT_URL" alt="Super app UI" /> -->
+            <span>Super App (User / Driver) – add screenshots here</span>
+          </div>
+          <div class="project-header-row">
+            <div>
+              <div class="project-title">Multi-Service Super App</div>
+              <div class="project-meta">
+                Taxi · Parcel · Food delivery · Flutter
+              </div>
+              <div class="project-link">
+                <a href="https://play.google.com/store/apps/details?id=com.yelowsoft.user" target="_blank">
+                  User app (com.yelowsoft.user)
+                </a>
+                <br />
+                <a href="https://play.google.com/store/apps/details?id=com.yelowsoft.driver" target="_blank">
+                  Driver app (com.yelowsoft.driver)
+                </a>
+              </div>
+            </div>
+            <div class="pill-small">Multi-module</div>
+          </div>
+          <p class="project-meta">
+            Contributed to a super-app ecosystem for on-demand services.
+            Implemented modular flows, booking UI, and reusable components
+            for user and driver apps while keeping structure scalable.
+          </p>
+        </article>
+
+        <!-- Add more projects later -->
+        <article class="project-card">
+          <div class="project-thumb">
+            <span>Islamic App UI – Quran · Salah · Qibla · Tasbih</span>
+          </div>
+          <div class="project-header-row">
+            <div>
+              <div class="project-title">Islamic Utility App</div>
+              <div class="project-meta">
+                Flutter · GetX · Firebase Firestore
+              </div>
+            </div>
+            <div class="pill-small">In progress</div>
+          </div>
+          <p class="project-meta">
+            A modern Islamic app with Quran reading, prayer timings,
+            Qibla direction, animated Tasbih, and local Masjid management –
+            focusing on elegant UI and smooth performance.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <div class="project-thumb">
+            <span>Salon Booking & City / Figma-style UI concepts</span>
+          </div>
+          <div class="project-header-row">
+            <div>
+              <div class="project-title">Booking & UI Systems</div>
+              <div class="project-meta">
+                React Native / Flutter · UI/UX
+              </div>
+            </div>
+            <div class="pill-small">Concepts</div>
+          </div>
+          <p class="project-meta">
+            Experiments with salon slot booking, beauty ecommerce flows,
+            and a Figma-style editor with multi-theme support for rapid UI creation.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section">
+      <h2 class="section-title">Let’s build something</h2>
+      <p class="section-subtitle">
+        Open to remote roles, freelance projects, and collaborations on mobile apps.
+      </p>
+
+      <div class="contact-card">
+        <div class="contact-main">
+          <strong>Have an idea or project?</strong><br />
+          I can help you design and ship a clean, reliable mobile experience.
+        </div>
+        <div class="contact-links">
+          <!-- Replace links with your actual profiles -->
+          <a href="mailto:YOUR_EMAIL_HERE">Email</a>
+          <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_SLUG" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Vasim Ghosi · Built with HTML & CSS · Hosted on GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    // Set current year in footer automatically
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
