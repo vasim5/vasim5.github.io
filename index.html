@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Vasim Ghosi – Mobile App Developer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Vasim Ghosi, Flutter & React Native mobile app developer." />
+  <meta name="description" content="Portfolio of Vasim Ghosi, React Native & Flutter mobile app developer." />
   <style>
     :root {
       --bg: #050b10;
@@ -67,17 +67,13 @@
     }
 
     .logo-badge {
-      width: 38px;
-      height: 38px;
-      border-radius: 14px;
-      background: radial-gradient(circle at 20% 0, #42e6a4 0, #2e8b8b 38%, #064663 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 18px;
-      color: #e5f7ff;
-      box-shadow: var(--shadow-soft);
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+    }
+    
+    .avatar-img {
+      border-radius: 999px;
     }
 
     .logo-text {
@@ -206,7 +202,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
 
     .btn {
@@ -245,12 +241,23 @@
       background: rgba(31, 41, 55, 0.95);
     }
 
+    .btn-outline {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .btn-outline:hover {
+      background: rgba(15, 23, 42, 0.9);
+    }
+
     .hero-meta {
       font-size: 11px;
       color: var(--muted);
       display: flex;
       flex-wrap: wrap;
       gap: 18px;
+      margin-top: 4px;
     }
 
     .hero-meta span {
@@ -456,6 +463,26 @@
       color: var(--muted);
     }
 
+    .meta-label {
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 6px;
+      margin-bottom: 2px;
+      color: #e5f7ff;
+    }
+
+    .project-list {
+      margin-top: 2px;
+      margin-bottom: 4px;
+      padding-left: 16px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .project-list li {
+      margin-bottom: 2px;
+    }
+
     .contact-card {
       margin-top: 24px;
       background: rgba(15, 23, 42, 0.92);
@@ -511,10 +538,16 @@
   <div class="page">
     <header>
       <div class="logo">
-        <div class="logo-badge">VG</div>
+        <div class="logo-badge">
+          <img
+            src="https://drive.google.com/file/d/1J7DMZnA6wLOdrrZOGJIjL39cGPUKFWp0/view?usp=drivesdk"
+            alt="Profile photo of Vasim Ghosi"
+            class="avatar-img"
+            />
+        </div>
         <div class="logo-text">
           <div class="logo-title">Vasim Ghosi</div>
-          <div class="logo-subtitle">Mobile App Developer · 8+ yrs exp</div>
+          <div class="logo-subtitle">Mobile App Developer · 9+ yrs exp</div>
         </div>
       </div>
       <div class="top-links">
@@ -523,7 +556,7 @@
           Available for remote work
         </div>
         <div class="chip chip-primary">
-          8+ yrs overall · 5+ yrs React Native · 1+ yr Flutter
+          9+ yrs overall · 5+ yrs React Native · 1+ yr Flutter
         </div>
       </div>
     </header>
@@ -532,37 +565,39 @@
       <!-- LEFT – HERO / ABOUT -->
       <section>
         <div class="hero-highlight">
-          Building real-world apps in <span>Flutter & React Native</span>
+          Building real-world apps in <span>React Native & Flutter</span>
         </div>
         <h1 class="hero-title">
           I design & build production-ready mobile apps that solve real problems.
         </h1>
         <p class="hero-subtitle">
-          I’m a mobile app developer with 8+ years of overall experience, including
+          I’m a mobile app developer with 9+ years of overall experience, including
           5+ years in React Native and 1+ year in Flutter, working with Firebase and modern
           mobile stacks. I’ve worked on marketplaces, multi-service super apps, booking
           platforms, and Islamic utility apps with clean UI and scalable architecture.
         </p>
 
         <div class="pill-row">
-          <div class="pill pill-strong">React Native · Redux · Firebase</div>
-          <div class="pill">Android · Flutter · GetX ·  REST APIs</div>
-          <div class="pill">Clean architecture & modular apps</div>
+          <div class="pill pill-strong">React Native · Flutter · Firebase</div>
+          <div class="pill">Mobile architecture & state mgmt</div>
+          <div class="pill">Clean, modular app structure</div>
         </div>
 
         <div class="cta-row">
-          <!-- Update href with your email & LinkedIn/GitHub -->
           <a class="btn btn-primary" href="mailto:vasimghosi@gmail.com">
             Contact me
           </a>
           <a class="btn btn-ghost" href="https://www.linkedin.com/in/vasim-ghosi-84322b139" target="_blank">
             View LinkedIn
           </a>
+          <a class="btn btn-outline" href="https://drive.google.com/file/d/1JKWRAHa04UWNmA-5TQfqWJ1xD0uQ-d4k/view?usp=drivesdk" target="_blank">
+            Download Resume (PDF)
+          </a>
         </div>
 
         <div class="hero-meta">
           <span><span class="dot"></span> India (IST)</span>
-          <span>Experienced with production apps on Play Store</span>
+          <span>Production apps on Play Store · Team & freelance experience</span>
         </div>
       </section>
 
@@ -581,8 +616,8 @@
           <div>
             <div class="skills-group-title">Mobile</div>
             <div class="skills-chips">
-              <div class="skills-chip">Flutter (Dart)</div>
               <div class="skills-chip">React Native</div>
+              <div class="skills-chip">Flutter (Dart)</div>
               <div class="skills-chip">GetX</div>
               <div class="skills-chip">Animations</div>
             </div>
@@ -673,9 +708,20 @@
             <div class="pill-small">Production</div>
           </div>
           <p class="project-meta">
-            Worked on a Guru.com-style mobile experience connecting employers
-            and freelancers, focusing on clean navigation, profile flows,
-            proposals, and smooth UX for both sides.
+            Mobile marketplace connecting employers and freelancers with job posting, proposals,
+            messaging, and profile flows optimized for mobile.
+          </p>
+
+          <div class="meta-label">My role & contributions</div>
+          <ul class="project-list">
+            <li>Implemented core user flows for both employer and freelancer apps.</li>
+            <li>Worked on navigation structure, profile screens, and proposal interactions.</li>
+            <li>Collaborated with backend/API teams to integrate and test endpoints.</li>
+          </ul>
+
+          <div class="meta-label">Tech stack</div>
+          <p class="project-meta">
+            React Native · REST APIs · State management · Android deployment
           </p>
         </article>
 
@@ -733,14 +779,28 @@
                 <a href="https://play.google.com/store/apps/details?id=com.yelowsoft.driver" target="_blank">
                   Yelowtaxi – Driver app
                 </a>
+                <a href="https://play.google.com/store/apps/details?id=com.yelowexpress.vendor" target="_blank">
+                  Yelowtaxi – Restaurant app
+                </a>
               </div>
             </div>
             <div class="pill-small">Multi-module</div>
           </div>
           <p class="project-meta">
-            Contributed to a super-app ecosystem for on-demand services.
-            Implemented modular flows, booking UI, and reusable components
-            for user, driver, and restaurant apps while keeping structure scalable.
+            On-demand mobility and delivery ecosystem with separate apps for riders, drivers,
+            and restaurants, supporting real-time booking and order flows.
+          </p>
+
+          <div class="meta-label">My role & contributions</div>
+          <ul class="project-list">
+            <li>Contributed to core booking and order flows across user, driver, and restaurant apps.</li>
+            <li>Implemented reusable UI components and screens to keep the codebase consistent.</li>
+            <li>Worked on improving UX in listing, details, and trip/order tracking views.</li>
+          </ul>
+
+          <div class="meta-label">Tech stack</div>
+          <p class="project-meta">
+            Flutter · Modular architecture · REST APIs · Maps & location flows
           </p>
         </article>
 
@@ -767,9 +827,20 @@
             <div class="pill-small">In progress</div>
           </div>
           <p class="project-meta">
-            A modern Islamic app with Quran reading, prayer timings,
-            Qibla direction, animated Tasbih, and local Masjid management –
-            focusing on elegant UI and smooth performance.
+            A modern Islamic app concept with multiple core utilities – Quran reading,
+            prayer timings, Qibla direction, Tasbih, and Masjid management.
+          </p>
+
+          <div class="meta-label">My role & contributions</div>
+          <ul class="project-list">
+            <li>Designed app structure around multiple Islamic utilities in a single experience.</li>
+            <li>Built animated Tasbih and prayer-time logic using location data (in prototype).</li>
+            <li>Planned Firestore models for Masjid data and user roles.</li>
+          </ul>
+
+          <div class="meta-label">Tech stack</div>
+          <p class="project-meta">
+            Flutter · GetX · Firebase Firestore · Local & cloud data
           </p>
         </article>
 
@@ -796,8 +867,20 @@
             <div class="pill-small">Concepts</div>
           </div>
           <p class="project-meta">
-            Experiments with salon slot booking, beauty ecommerce flows,
-            and a Figma-style editor with multi-theme support for rapid UI creation.
+            Internal experiments focused on slot booking logic, product listing UX,
+            and reusable design systems for rapid UI-building.
+          </p>
+
+          <div class="meta-label">My role & contributions</div>
+          <ul class="project-list">
+            <li>Designed and built reusable components for calendars, lists, and cards.</li>
+            <li>Tested multi-theme support inspired by design tools like Figma.</li>
+            <li>Optimized layouts for different screen sizes and densities.</li>
+          </ul>
+
+          <div class="meta-label">Tech stack</div>
+          <p class="project-meta">
+            Flutter · React Native · Theming systems · Component-driven UI
           </p>
         </article>
       </div>
@@ -816,7 +899,6 @@
           I can help you design and ship a clean, reliable mobile experience.
         </div>
         <div class="contact-links">
-          <!-- Replace links with your actual profiles -->
           <a href="mailto:vasimghosi@gmail.com">Email</a>
           <a href="https://github.com/vasim5" target="_blank">GitHub</a>
           <a href="https://www.linkedin.com/in/vasim-ghosi-84322b139" target="_blank">LinkedIn</a>
