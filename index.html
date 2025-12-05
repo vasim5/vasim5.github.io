@@ -376,12 +376,28 @@
       overflow: hidden;
       background: #020617;
       border: 1px solid rgba(15, 23, 42, 0.9);
-      height: 140px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 8px;
+    }
+
+    .thumb-caption {
       font-size: 11px;
       color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .screenshot-strip {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .screenshot-strip img {
+      border-radius: 10px;
+      min-width: 120px;
+      max-width: 160px;
+      height: auto;
+      border: 1px solid rgba(15, 23, 42, 0.9);
     }
 
     .project-header-row {
@@ -404,7 +420,7 @@
 
     .project-link {
       font-size: 11px;
-      margin-top: 2px;
+      margin-top: 4px;
     }
 
     .project-link a {
@@ -483,7 +499,7 @@
         <div class="logo-badge">VG</div>
         <div class="logo-text">
           <div class="logo-title">Vasim Ghosi</div>
-          <div class="logo-subtitle">Mobile App Developer</div>
+          <div class="logo-subtitle">Mobile App Developer · 9+ yrs exp</div>
         </div>
       </div>
       <div class="top-links">
@@ -492,7 +508,7 @@
           Available for remote work
         </div>
         <div class="chip chip-primary">
-          9+ yrs exp · 5+ yrs React Native
+          9+ yrs overall · 5+ yrs React Native · 1+ yr Flutter
         </div>
       </div>
     </header>
@@ -507,10 +523,10 @@
           I design & build production-ready mobile apps that solve real problems.
         </h1>
         <p class="hero-subtitle">
-  I’m a mobile app developer with 9 years of overall experience, including
-  5+ years in React Native and 1+ year in Flutter, working with Firebase and modern
-  mobile stacks. I’ve worked on marketplaces, multi-service super apps, booking
-  platforms, and Islamic utility apps with clean UI and scalable architecture.
+          I’m a mobile app developer with 9+ years of overall experience, including
+          5+ years in React Native and 1+ year in Flutter, working with Firebase and modern
+          mobile stacks. I’ve worked on marketplaces, multi-service super apps, booking
+          platforms, and Islamic utility apps with clean UI and scalable architecture.
         </p>
 
         <div class="pill-row">
@@ -521,11 +537,11 @@
 
         <div class="cta-row">
           <!-- Update href with your email & LinkedIn/GitHub -->
-          <a class="btn btn-primary" href="mailto: vasimghosi@gmail.com">
+          <a class="btn btn-primary" href="mailto:vasimghosi@gmail.com">
             Contact me
           </a>
-          <a class="btn btn-ghost" href="https://github.com/vasim5" target="_blank">
-            View GitHub
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/vasim-ghosi-84322b139" target="_blank">
+            View LinkedIn
           </a>
         </div>
 
@@ -596,9 +612,17 @@
         <!-- Guru Marketplace -->
         <article class="project-card">
           <div class="project-thumb">
-            <!-- Replace SRC with a screenshot or icon URL from play store -->
-            <!-- Example: <img src="YOUR_GURU_SCREENSHOT_URL" alt="Guru Marketplace app UI" /> -->
-            <span>Guru Marketplace – add Play Store screenshot here</span>
+            <div class="thumb-caption">Guru Marketplace – Employers (left) & Freelancers (right)</div>
+            <div class="screenshot-strip">
+              <!-- Employers -->
+              <img src="https://play-lh.googleusercontent.com/9vkLpaPfMROPU8MgREect33ZqT_V_Ku2SZJHkMFvw4lCesM8R8Ekz1_A9G0GQH5vUvQ=w5120-h2880-rw" alt="Guru for Employers screenshot 1" />
+              <img src="https://play-lh.googleusercontent.com/GPo0XyyWe0-NtWe_j78veQBdtd7ds8jH9Ec40R-8_FmTWi9d97oO2I-MVrHrq3Mlv2c=w5120-h2880-rw" alt="Guru for Employers screenshot 2" />
+              <img src="https://play-lh.googleusercontent.com/WJ0H7zaqTUrizoZXFB9EvrazqQvHdLrNI3lwWg_cY6iOu_Giyl3mfg6poyyT-EBgxZ8=w5120-h2880-rw" alt="Guru for Employers screenshot 3" />
+              <!-- Freelancers -->
+              <img src="https://play-lh.googleusercontent.com/IdIN50Mb8yot_87qb_PqBABANxQDYlE8eNxm3YnrxT0zKeDZqd6J4i1QPdSRTsGaMwY=w5120-h2880-rw" alt="Guru for Freelancers screenshot 1" />
+              <img src="https://play-lh.googleusercontent.com/Wj1aFz3mdkaXBFfy8qVqiE39rTajO3U2L9uxP2KDIGZWHII_V9g7QQSpv6iGx2thwA=w5120-h2880-rw" alt="Guru for Freelancers screenshot 2" />
+              <img src="https://play-lh.googleusercontent.com/AxX4r91YwlKnHKxlc1EtA5OGvSd-iifNxwTBOu7S544dR9F7e7EKhbaCPksDVeJle-g=w5120-h2880-rw" alt="Guru for Freelancers screenshot 3" />
+            </div>
           </div>
           <div class="project-header-row">
             <div>
@@ -608,11 +632,11 @@
               </div>
               <div class="project-link">
                 <a href="https://play.google.com/store/apps/details?id=com.guru.marketplace" target="_blank">
-                  Open app (com.guru.marketplace)
+                  Guru for Employers (Play Store)
                 </a>
                 <br />
                 <a href="https://play.google.com/store/apps/details?id=com.guru.flmarketplace" target="_blank">
-                  Open app (com.guru.flmarketplace)
+                  Guru for Freelancers (Play Store)
                 </a>
               </div>
             </div>
@@ -628,9 +652,21 @@
         <!-- Super App -->
         <article class="project-card">
           <div class="project-thumb">
-            <!-- Replace SRC with a screenshot or icon URL from play store -->
-            <!-- Example: <img src="YOUR_SUPERAPP_SCREENSHOT_URL" alt="Super app UI" /> -->
-            <span>Super App (User / Driver) – add screenshots here</span>
+            <div class="thumb-caption">Yelowtaxi – User, Driver & Restaurant apps</div>
+            <div class="screenshot-strip">
+              <!-- User app -->
+              <img src="https://play-lh.googleusercontent.com/ngZYPW8xBtFLbFNDGhnpzJYIkrH1zwKcZ5PuOF8_bbIbPUyZc18raE6DvnptgnbGLjU=w5120-h2880-rw" alt="Yelowtaxi User screenshot 1" />
+              <img src="https://play-lh.googleusercontent.com/L5qngW_MalA39xm8aDxIcwLlI1N7JRF8opHtd4bjXZ7etMclEgPVknHgArmWmh6TsDEa=w5120-h2880-rw" alt="Yelowtaxi User screenshot 2" />
+              <img src="https://play-lh.googleusercontent.com/tTxKCiF6tcH_qjyHwnZhtKlrOi0bobnntOTvphjZFp6SbsGrwHx3qYwAVgdz0nketB6A=w5120-h2880-rw" alt="Yelowtaxi User screenshot 3" />
+              <!-- Driver app -->
+              <img src="https://play-lh.googleusercontent.com/1GZiER51agGGehl0b2MJkiSmSZXHbkhhCGX2MLlAkXZLXYqPA6O7ucAi052Xe07HBg=w5120-h2880-rw" alt="Yelowtaxi Driver screenshot 1" />
+              <img src="https://play-lh.googleusercontent.com/8q4o8qjindVG4enUIbSnS-XuvZ3i-1tCGK5Q3QOwZsko1GT0XSCnS5FpgZj_aBe148Y=w5120-h2880-rw" alt="Yelowtaxi Driver screenshot 2" />
+              <img src="https://play-lh.googleusercontent.com/hkk9XZpBh7phMue4ujyBeyvwMe_xi4Ymgdh-GTGtaG_cBCeiU8uv8dAzQohAZgCp2dE=w5120-h2880-rw" alt="Yelowtaxi Driver screenshot 3" />
+              <!-- Restaurant app -->
+              <img src="https://play-lh.googleusercontent.com/pP-DjP3WWpbFNttXm32GMAKUR4NVmdoOd68VNCOt8SL9OtaaDsRIMFlcetnn61UgHps=w5120-h2880-rw" alt="Yelowtaxi Restaurant screenshot 1" />
+              <img src="https://play-lh.googleusercontent.com/SnwVGqICrI--ohssBENBCDbQ4rhqOiKMg9nR0MwE4tRjF1ie0-TTlhI8Lqa4G69iI-4=w5120-h2880-rw" alt="Yelowtaxi Restaurant screenshot 2" />
+              <img src="https://play-lh.googleusercontent.com/joIDCk2mFdOUjI_omRJUxqCe1rJowUjI4IhDV_wTpNHk4GHwlIB3wKlyjsUpZhRplQ=w5120-h2880-rw" alt="Yelowtaxi Restaurant screenshot 3" />
+            </div>
           </div>
           <div class="project-header-row">
             <div>
@@ -640,11 +676,11 @@
               </div>
               <div class="project-link">
                 <a href="https://play.google.com/store/apps/details?id=com.yelowsoft.user" target="_blank">
-                  User app (com.yelowsoft.user)
+                  Yelowtaxi – User app
                 </a>
                 <br />
                 <a href="https://play.google.com/store/apps/details?id=com.yelowsoft.driver" target="_blank">
-                  Driver app (com.yelowsoft.driver)
+                  Yelowtaxi – Driver app
                 </a>
               </div>
             </div>
@@ -653,14 +689,20 @@
           <p class="project-meta">
             Contributed to a super-app ecosystem for on-demand services.
             Implemented modular flows, booking UI, and reusable components
-            for user and driver apps while keeping structure scalable.
+            for user, driver, and restaurant apps while keeping structure scalable.
           </p>
         </article>
 
-        <!-- Add more projects later -->
+        <!-- Islamic App -->
         <article class="project-card">
           <div class="project-thumb">
-            <span>Islamic App UI – Quran · Salah · Qibla · Tasbih</span>
+            <div class="thumb-caption">Islamic App UI – Quran · Salah · Qibla · Tasbih (concept)</div>
+            <div class="screenshot-strip">
+              <span style="font-size:11px; color:var(--muted); padding:4px 2px;">
+                Screenshots coming soon – modern Islamic app UI with Quran reading,
+                prayer timings, Qibla direction & animated Tasbih.
+              </span>
+            </div>
           </div>
           <div class="project-header-row">
             <div>
@@ -678,9 +720,16 @@
           </p>
         </article>
 
+        <!-- Booking & UI Systems -->
         <article class="project-card">
           <div class="project-thumb">
-            <span>Salon Booking & City / Figma-style UI concepts</span>
+            <div class="thumb-caption">Salon booking & Figma-style UI concepts</div>
+            <div class="screenshot-strip">
+              <span style="font-size:11px; color:var(--muted); padding:4px 2px;">
+                Experiments with salon slot booking, beauty ecommerce flows,
+                and a Figma-style editor with multi-theme support.
+              </span>
+            </div>
           </div>
           <div class="project-header-row">
             <div>
