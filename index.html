@@ -1,927 +1,337 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Vasim Ghosi – Mobile App Developer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Vasim Ghosi, React Native & Flutter mobile app developer." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f766e" />
+  <meta name="description" content="Vasim Ghosi — Mobile App Developer specializing in React Native and Flutter." />
+  <title>Vasim Ghosi | Mobile App Developer</title>
+
   <style>
     :root {
-      --bg: #050b10;
-      --bg-alt: #07131c;
-      --primary: #2e8b8b;
-      --primary-soft: rgba(46, 139, 139, 0.15);
-      --text: #f3f5f7;
-      --muted: #9ba3af;
-      --card: #0b1822;
-      --border: #1f2933;
-      --radius-xl: 18px;
-      --radius-full: 999px;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
-      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
+      --primary:#0f766e; --primary2:#14b8a6; --soft:#e8f7f5;
+      --bg:#f7faf9; --surface:#fff; --surface2:#f1f7f6;
+      --text:#102a2a; --muted:#607373; --border:#dce9e7;
+      --dark:#102f2e; --shadow:0 12px 35px rgba(16,47,46,.08);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;background:radial-gradient(circle at 90% 0%,rgba(20,184,166,.10),transparent 28rem),var(--bg);color:var(--text);line-height:1.6;padding-bottom:48px}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1080px,calc(100% - 32px));margin:auto}
+
+    .nav-wrap{position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);background:rgba(247,250,249,.88);border-bottom:1px solid rgba(220,233,231,.75)}
+    nav{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{font-weight:800;letter-spacing:-.03em;color:var(--dark);font-size:18px}.brand span{color:var(--primary)}
+    .nav-links{display:flex;gap:20px;color:var(--muted);font-size:13px;font-weight:650}
+    .nav-links a:hover{color:var(--primary)}
+
+    .hero{padding:72px 0 56px}.hero-grid{display:grid;grid-template-columns:1.4fr .9fr;gap:42px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--primary);background:var(--soft);border:1px solid #c9e8e4;padding:7px 12px;border-radius:999px;font-size:12px;font-weight:750;margin-bottom:18px}
+    .dot{width:7px;height:7px;background:#20a77a;border-radius:50%;box-shadow:0 0 0 4px rgba(32,167,122,.12)}
+    h1{margin:0;font-size:clamp(38px,7vw,68px);line-height:1.02;letter-spacing:-.055em;max-width:760px}
+    .hero h1 span{color:var(--primary)}
+    .hero-copy{margin:22px 0 0;color:var(--muted);max-width:670px;font-size:17px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:13px;font-size:14px;font-weight:750;transition:.2s}
+    .btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--primary);color:#fff;box-shadow:0 8px 20px rgba(15,118,110,.22)}.btn-secondary{background:#fff;border:1px solid var(--border);color:var(--dark)}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:32px;max-width:620px}
+    .stat{background:rgba(255,255,255,.78);border:1px solid var(--border);border-radius:16px;padding:15px}.stat strong{display:block;font-size:22px;letter-spacing:-.03em;color:var(--dark)}.stat span{color:var(--muted);font-size:11px;font-weight:650}
+    .hero-card{background:linear-gradient(155deg,var(--dark),#155e59);color:#fff;border-radius:30px;padding:28px;box-shadow:0 24px 60px rgba(16,47,46,.18);position:relative;overflow:hidden}
+    .hero-card:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-65px;top:-65px;background:rgba(20,184,166,.16)}
+    .mini-label{color:#a7dcd7;text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:800}.hero-card h2{font-size:27px;line-height:1.15;margin:12px 0;letter-spacing:-.03em}.hero-card p{color:#c7dddb;font-size:14px;margin:0}
+    .tech-pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}.tech-pills span{padding:6px 9px;border-radius:8px;background:rgba(255,255,255,.09);color:#e6f4f2;font-size:11px;font-weight:650}
+
+    section{padding:58px 0}.section-head{margin-bottom:25px}.section-kicker{color:var(--primary);font-size:11px;text-transform:uppercase;letter-spacing:.14em;font-weight:800}
+    .section-title{margin:6px 0 0;font-size:clamp(27px,4vw,38px);letter-spacing:-.04em;line-height:1.1}.section-subtitle{color:var(--muted);max-width:650px;margin:9px 0 0;font-size:14px}
+
+    .about-card{display:grid;grid-template-columns:1.3fr .7fr;gap:28px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+    .about-card p{color:var(--muted);margin-top:0}.focus-list{display:grid;gap:10px}.focus-item{padding:13px;border-radius:13px;background:var(--surface2);border:1px solid var(--border);font-size:13px;font-weight:650}
+    .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.skill-card{background:#fff;border:1px solid var(--border);padding:18px;border-radius:17px}.skill-card h3{margin:0 0 10px;font-size:14px}.skill-card p{margin:0;color:var(--muted);font-size:12px}
+
+    .timeline{display:grid;gap:16px}.experience-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:23px;box-shadow:0 8px 25px rgba(16,47,46,.05)}
+    .experience-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.experience-card h3{margin:0;font-size:18px}.company{color:var(--primary);font-size:13px;font-weight:750;margin-top:3px}.period{white-space:nowrap;color:var(--muted);font-size:11px;font-weight:650;background:var(--surface2);padding:6px 9px;border-radius:8px}.experience-card ul{color:var(--muted);padding-left:18px;font-size:13px;margin-bottom:0}
+
+    /* Equal project cards */
+    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .project-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 25px rgba(16,47,46,.045);transition:.2s}
+    .project-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    .project-content{padding:20px 21px 21px}
+    .project-type{color:var(--primary);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+    .project-card h3{margin:7px 0 8px;font-size:19px;letter-spacing:-.02em}.project-card p{margin:0;color:var(--muted);font-size:13px}
+    .stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:15px}.stack span{background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:4px 7px;font-size:10px;color:var(--muted);font-weight:650}
+    .project-gallery{
+      display:block;
+      width:100%;
+      padding:12px;
+      background:#edf5f4;
+      border-bottom:1px solid var(--border);
+      overflow:hidden;
+      box-sizing:border-box;
+    }
+    .gallery-group{
+      display:block;
+      width:100%;
+      margin:0 0 16px;
+    }
+    .gallery-group:last-child{margin-bottom:0}
+    .gallery-label{
+      display:block;
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--primary);
+      padding:2px 2px 8px;
+    }
+    .gallery-strip{
+      display:flex;
+      flex-wrap:nowrap;
+      width:100%;
+      gap:10px;
+      overflow-x:auto;
+      overflow-y:hidden;
+      padding:0 2px 6px;
+      box-sizing:border-box;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:thin;
+    }
+    .gallery-strip img{
+      flex:0 0 calc((100% - 20px)/3);
+      width:calc((100% - 20px)/3);
+      min-width:calc((100% - 20px)/3);
+      height:auto;
+      object-fit:contain;
+      display:block;
+      margin:0;
+      border-radius:9px;
+      
+      scroll-snap-align:start;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    .placeholder{
+aspect-ratio:1/1.55;border-radius:9px;background:linear-gradient(145deg,#e8f2f1,#dce9e7);display:flex;align-items:center;justify-content:center;text-align:center;color:#78908f;font-size:10px;padding:8px}
 
-    body {
-      font-family: var(--font-main);
-      background: radial-gradient(circle at top left, #102a43 0, #050b10 45%);
-      color: var(--text);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    .project-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
+    .project-links a{display:inline-flex;align-items:center;background:var(--soft);color:var(--primary);border-radius:8px;padding:6px 9px;font-size:10px;font-weight:750}
+    .project-links a:hover{background:var(--primary);color:#fff}
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    .contact{background:var(--dark);color:#fff;border-radius:28px;padding:34px;text-align:center}.contact h2{margin:0;font-size:30px;letter-spacing:-.04em}.contact p{color:#c5d9d7;max-width:570px;margin:10px auto 20px;font-size:14px}.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}.contact-link{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.13);padding:10px 14px;border-radius:10px;font-size:12px;font-weight:650}
+    footer{text-align:center;padding:25px 0 5px;color:var(--muted);font-size:11px}
 
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 32px 18px 48px;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 32px;
-      gap: 16px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-badge {
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-    }
-    
-    .avatar-img {
-     width: 100%;
-     height: 100%;
-     border-radius: 14px;   /* or 999px for circle */
-     object-fit: cover;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .logo-title {
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .logo-subtitle {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .top-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .chip {
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(156, 163, 175, 0.4);
-      color: var(--muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(15, 23, 42, 0.8);
-    }
-
-    .chip-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
-    }
-
-    .chip-primary {
-      border-color: rgba(46, 139, 139, 0.9);
-      color: #e0f2f1;
-      background: rgba(46, 139, 139, 0.18);
-    }
-
-    main {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
-      gap: 32px;
-    }
-
-    @media (max-width: 840px) {
-      main {
-        grid-template-columns: 1fr;
+    @media(max-width:850px){.hero-grid,.about-card{grid-template-columns:1fr}.skills-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:620px){
+      .container{width:min(100% - 22px,1080px)}.nav-links{display:none}.hero{padding:48px 0 35px}section{padding:42px 0}
+      .stats{grid-template-columns:repeat(3,1fr)}.stat{padding:11px 8px}.stat strong{font-size:18px}.stat span{font-size:9px}
+      .about-card,.contact{padding:21px}.project-grid{grid-template-columns:1fr}.experience-top{display:block}.period{display:inline-block;margin-top:8px}
+      .gallery-strip{gap:8px}
+      .gallery-strip img{
+        flex:0 0 calc((100% - 8px)/2);
+        width:calc((100% - 8px)/2);
+        min-width:calc((100% - 8px)/2);
       }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .top-links {
-        justify-content: flex-start;
-      }
-    }
-
-    /* Hero */
-    .hero-title {
-      font-size: 32px;
-      line-height: 1.25;
-      margin-bottom: 10px;
-    }
-
-    .hero-highlight {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.85);
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    .hero-highlight span {
-      font-weight: 600;
-      color: #e5f7ff;
-    }
-
-    .hero-subtitle {
-      font-size: 14px;
-      color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 18px;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 22px;
-    }
-
-    .pill {
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 11px;
-      background: rgba(15, 23, 42, 0.85);
-      color: var(--muted);
-      border: 1px solid rgba(31, 41, 55, 0.7);
-    }
-
-    .pill-strong {
-      border-color: rgba(46, 139, 139, 0.9);
-      color: #e0f2f1;
-      background: var(--primary-soft);
-    }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .btn {
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 14px;
-      border-radius: var(--radius-full);
-      padding: 10px 18px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, background 0.12s ease-out;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #42e6a4, #2e8b8b);
-      color: #02131a;
-      box-shadow: var(--shadow-soft);
-      font-weight: 600;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55);
-    }
-
-    .btn-ghost {
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--muted);
-      border: 1px solid rgba(75, 85, 99, 0.8);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(31, 41, 55, 0.95);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--muted);
-      border: 1px solid rgba(148, 163, 184, 0.7);
-    }
-
-    .btn-outline:hover {
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .hero-meta {
-      font-size: 11px;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      margin-top: 4px;
-    }
-
-    .hero-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--primary);
-    }
-
-    /* Right Column */
-    .card {
-      background: linear-gradient(145deg, var(--card), #050b10);
-      border-radius: 22px;
-      padding: 18px 18px 18px;
-      border: 1px solid rgba(148, 163, 184, 0.32);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-
-    .card-title {
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .card-subtitle {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .badge {
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 10px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      color: var(--muted);
-    }
-
-    .badge span {
-      color: #e5f7ff;
-      font-weight: 600;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      font-size: 12px;
-    }
-
-    .skills-group-title {
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .skills-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .skills-chip {
-      padding: 4px 8px;
-      border-radius: 999px;
-      font-size: 11px;
-      background: rgba(15, 23, 42, 0.85);
-      color: var(--muted);
-      border: 1px solid rgba(31, 41, 55, 0.7);
-    }
-
-    .section {
-      margin-top: 40px;
-    }
-
-    .section-title {
-      font-size: 18px;
-      margin-bottom: 6px;
-    }
-
-    .section-subtitle {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    @media (max-width: 840px) {
-      .projects {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .project-card {
-      background: rgba(10, 18, 28, 0.95);
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(30, 64, 175, 0.5);
-      padding: 12px 12px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .project-thumb {
-      border-radius: 14px;
-      overflow: hidden;
-      background: #020617;
-      border: 1px solid rgba(15, 23, 42, 0.9);
-      padding: 8px;
-    }
-
-    .thumb-caption {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .app-block {
-      margin-bottom: 10px;
-    }
-
-    .app-block:last-child {
-      margin-bottom: 0;
-    }
-
-    .app-block-title {
-      font-size: 11px;
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: #e5f7ff;
-    }
-
-    .screenshot-strip {
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-    }
-
-    .screenshot-strip img {
-      border-radius: 10px;
-      min-width: 120px;
-      max-width: 160px;
-      height: auto;
-      border: 1px solid rgba(15, 23, 42, 0.9);
-    }
-
-    .project-header-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      align-items: flex-start;
-    }
-
-    .project-title {
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .project-meta {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    .project-link {
-      font-size: 11px;
-      margin-top: 4px;
-    }
-
-    .project-link a {
-      color: #7dd3fc;
-      text-decoration: none;
-    }
-
-    .project-link a:hover {
-      text-decoration: underline;
-    }
-
-    .pill-small {
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-size: 10px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(51, 65, 85, 0.95);
-      color: var(--muted);
-    }
-
-    .meta-label {
-      font-size: 11px;
-      font-weight: 600;
-      margin-top: 6px;
-      margin-bottom: 2px;
-      color: #e5f7ff;
-    }
-
-    .project-list {
-      margin-top: 2px;
-      margin-bottom: 4px;
-      padding-left: 16px;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .project-list li {
-      margin-bottom: 2px;
-    }
-
-    .contact-card {
-      margin-top: 24px;
-      background: rgba(15, 23, 42, 0.92);
-      border-radius: var(--radius-xl);
-      padding: 14px 14px 16px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      align-items: center;
-      font-size: 13px;
-    }
-
-    @media (max-width: 640px) {
-      .contact-card {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    .contact-main {
-      color: var(--muted);
-    }
-
-    .contact-main strong {
-      color: var(--text);
-    }
-
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      font-size: 12px;
-    }
-
-    .contact-links a {
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      color: var(--muted);
-    }
-
-    footer {
-      margin-top: 26px;
-      font-size: 11px;
-      color: var(--muted);
-      text-align: center;
     }
   </style>
 </head>
+
 <body>
-  <div class="page">
-    <header>
-      <div class="logo">
-        <div class="logo-badge">
-          <img
-           src="Vasim_Profile_Image.jpg"
-           alt="Profile photo of Vasim Ghosi"
-           class="avatar-img"
-           />
+  <div class="nav-wrap">
+    <div class="container">
+      <nav>
+        <a class="brand" href="#">Vasim Ghosi<span>.</span></a>
+        <div class="nav-links">
+          <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
         </div>
-        <div class="logo-text">
-          <div class="logo-title">Vasim Ghosi</div>
-          <div class="logo-subtitle">Mobile App Developer · 9+ yrs exp</div>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <header class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Mobile App Developer</div>
+          <h1>Mobile apps built with <span>experience</span> and purpose.</h1>
+          <p class="hero-copy">I'm Vasim Ghosi, a mobile app developer with 9+ years of professional experience, specializing in React Native and Flutter. I enjoy turning ideas into reliable, polished and user-friendly products.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#projects">View my work</a><a class="btn btn-secondary" href="#contact">Let's connect</a></div>
+          <div class="stats">
+            <div class="stat"><strong>9+</strong><span>Years Experience</span></div>
+            <div class="stat"><strong>6+</strong><span>Years React Native</span></div>
+            <div class="stat"><strong>3+</strong><span>Years Flutter</span></div>
+          </div>
         </div>
-      </div>
-      <div class="top-links">
-        <div class="chip">
-          <span class="chip-dot"></span>
-          Available for remote work
-        </div>
-        <div class="chip chip-primary">
-          9+ yrs overall · 5.5+ yrs React Native · 3+ yrs Flutter
+        <div class="hero-card">
+          <div class="mini-label">Core expertise</div>
+          <h2>Cross-platform mobile development</h2>
+          <p>From product architecture and UI implementation to APIs, notifications, maps, Firebase services and production releases.</p>
+          <div class="tech-pills"><span>React Native</span><span>Flutter</span><span>Dart</span><span>JavaScript</span><span>Firebase</span><span>REST APIs</span><span>GetX</span><span>Git</span></div>
         </div>
       </div>
     </header>
 
-    <main>
-      <!-- LEFT – HERO / ABOUT -->
-      <section>
-        <div class="hero-highlight">
-          Building real-world apps in <span>React Native & Flutter</span>
-        </div>
-        <h1 class="hero-title">
-          I design & build production-ready mobile apps that solve real problems.
-        </h1>
-        <p class="hero-subtitle">
-          I’m a mobile app developer with 9+ years of overall experience, including
-          5.5+ years in React Native and 3+ year in Flutter, working with Firebase and modern
-          mobile stacks. I’ve worked on marketplaces, multi-service super apps, booking
-          platforms, and Islamic utility apps with clean UI and scalable architecture.
-        </p>
-
-        <div class="pill-row">
-          <div class="pill pill-strong">React Native · Flutter · Firebase</div>
-          <div class="pill">Mobile architecture & state mgmt</div>
-          <div class="pill">Clean, modular app structure</div>
-        </div>
-
-        <div class="cta-row">
-          <a class="btn btn-primary" href="mailto:vasimghosi@gmail.com">
-            Contact me
-          </a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/vasim-ghosi-84322b139" target="_blank">
-            View LinkedIn
-          </a>
-          <a class="btn btn-outline" href="https://drive.google.com/file/d/1cSQ-_FVCAemIJjQd48GhU8gQphtb6P2u/view?usp=drivesdk" target="_blank">
-            Download Resume (PDF)
-          </a>
-        </div>
-
-        <div class="hero-meta">
-          <span><span class="dot"></span> India (IST)</span>
-          <span>Production apps on Play Store · Team & freelance experience</span>
-        </div>
-      </section>
-
-      <!-- RIGHT – SKILLS CARD -->
-      <section class="card">
-        <div class="card-header">
+    <section id="about">
+      <div class="container">
+        <div class="section-head"><div class="section-kicker">About</div><h2 class="section-title">Building products, not just screens.</h2></div>
+        <div class="about-card">
           <div>
-            <div class="card-title">Tech Snapshot</div>
-            <div class="card-subtitle">Core tools I work with</div>
+            <p>I’m a mobile-focused developer experienced in building and maintaining cross-platform applications from the ground up. My primary focus is React Native, with strong hands-on experience in Flutter.</p>
+            <p>I’ve worked on marketplace platforms, multi-service applications, booking systems, utility apps and other products involving real-world workflows, notifications, maps, APIs and backend integrations.</p>
+            <p>I also enjoy mentoring developers, reviewing code and helping teams deliver maintainable mobile experiences.</p>
           </div>
-          <div class="badge">
-            <span>Mobile-first</span> · End-to-end
+          <div class="focus-list">
+            <div class="focus-item">📱 Cross-platform mobile apps</div><div class="focus-item">⚡ Performance & responsive UI</div><div class="focus-item">🔔 Notifications & background tasks</div><div class="focus-item">🗺 Maps & location-based features</div><div class="focus-item">☁️ Firebase & REST APIs</div><div class="focus-item">👨‍💻 Code reviews & mentoring</div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head"><div class="section-kicker">Tech stack</div><h2 class="section-title">Tools I work with</h2></div>
         <div class="skills-grid">
-          <div>
-            <div class="skills-group-title">Mobile</div>
-            <div class="skills-chips">
-              <div class="skills-chip">React Native</div>
-              <div class="skills-chip">Flutter (Dart)</div>
-              <div class="skills-chip">GetX</div>
-              <div class="skills-chip">Animations</div>
-            </div>
-          </div>
-          <div>
-            <div class="skills-group-title">Backend / Data</div>
-            <div class="skills-chips">
-              <div class="skills-chip">Firebase (Auth, Firestore)</div>
-              <div class="skills-chip">Push Notifications</div>
-              <div class="skills-chip">REST APIs</div>
-              <div class="skills-chip">SQLite</div>
-            </div>
-          </div>
-          <div>
-            <div class="skills-group-title">Architecture</div>
-            <div class="skills-chips">
-              <div class="skills-chip">Modular apps</div>
-              <div class="skills-chip">Clean structure</div>
-              <div class="skills-chip">Reusable UI</div>
-            </div>
-          </div>
-          <div>
-            <div class="skills-group-title">Tools</div>
-            <div class="skills-chips">
-              <div class="skills-chip">Git & GitHub</div>
-              <div class="skills-chip">Android Studio</div>
-              <div class="skills-chip">Figma to app</div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- PROJECTS -->
-    <section class="section">
-      <h2 class="section-title">Selected Projects</h2>
-      <p class="section-subtitle">
-        A few live apps and product experiences I’ve contributed to.
-      </p>
-
-      <div class="projects">
-        <!-- Guru Marketplace -->
-        <article class="project-card">
-          <div class="project-thumb">
-            <div class="thumb-caption">Guru Marketplace – Employers & Freelancers</div>
-
-            <div class="app-block">
-              <div class="app-block-title">Guru for Employers</div>
-              <div class="screenshot-strip">
-                <img src="https://play-lh.googleusercontent.com/9vkLpaPfMROPU8MgREect33ZqT_V_Ku2SZJHkMFvw4lCesM8R8Ekz1_A9G0GQH5vUvQ=w5120-h2880-rw" alt="Guru for Employers screenshot 1" />
-                <img src="https://play-lh.googleusercontent.com/GPo0XyyWe0-NtWe_j78veQBdtd7ds8jH9Ec40R-8_FmTWi9d97oO2I-MVrHrq3Mlv2c=w5120-h2880-rw" alt="Guru for Employers screenshot 2" />
-                <img src="https://play-lh.googleusercontent.com/WJ0H7zaqTUrizoZXFB9EvrazqQvHdLrNI3lwWg_cY6iOu_Giyl3mfg6poyyT-EBgxZ8=w5120-h2880-rw" alt="Guru for Employers screenshot 3" />
-                <img src="https://play-lh.googleusercontent.com/t6cqK3gXvmG7CFQr_Zd8cmqupXTPgxK_rXjIzreefh6utCy28twEzEgiSORABgUfQlbK=w5120-h2880-rw" alt="Guru for Employers screenshot 4" />
-                <img src="https://play-lh.googleusercontent.com/VvUJfy7zw6J-ai493uqxSaTXniM3li_D5_0oRjFmttUxn12bLUD_kQfVolFHIQq-DRM=w5120-h2880-rw" alt="Guru for Employers screenshot 5" />
-                <img src="https://play-lh.googleusercontent.com/15tZwf1gerXfcAzuuAQFFrCoAsGZJYGdrW4tAPUdUfmynsP5Tc9-rnd2_KCobqlJsv4g=w5120-h2880-rw" alt="Guru for Employers screenshot 6" />
-              </div>
-            </div>
-
-            <div class="app-block">
-              <div class="app-block-title">Guru for Freelancers</div>
-              <div class="screenshot-strip">
-                <img src="https://play-lh.googleusercontent.com/IdIN50Mb8yot_87qb_PqBABANxQDYlE8eNxm3YnrxT0zKeDZqd6J4i1QPdSRTsGaMwY=w5120-h2880-rw" alt="Guru for Freelancers screenshot 1" />
-                <img src="https://play-lh.googleusercontent.com/Wj1aFz3mdkaXBFfy8qVqiE39rTajO3U2L9uxP2KDIGZWHII_V9g7QQSpv6iGx2thwA=w5120-h2880-rw" alt="Guru for Freelancers screenshot 2" />
-                <img src="https://play-lh.googleusercontent.com/AxX4r91YwlKnHKxlc1EtA5OGvSd-iifNxwTBOu7S544dR9F7e7EKhbaCPksDVeJle-g=w5120-h2880-rw" alt="Guru for Freelancers screenshot 3" />
-                <img src="https://play-lh.googleusercontent.com/bi0S80F-rkjNTZY2FnOLiX7hYkGFTRFcDZejghaILXgIKdJLazw1cu4m1jJ5utIvnw=w5120-h2880-rw" alt="Guru for Freelancers screenshot 4" />
-                <img src="https://play-lh.googleusercontent.com/NNVmeAqA2-b2l1a_thDn-KVkFQfAH7AxfXlQL2ZAvxAnZSLGowXOp3J8KmGACxvSB8w=w5120-h2880-rw" alt="Guru for Freelancers screenshot 5" />
-                <img src="https://play-lh.googleusercontent.com/JPklxmMklbvceo7GMg2pA0jYs6aa4_h9DTKhSvCEGs-re66L8aKrG7xPis-1YSb62I8=w5120-h2880-rw" alt="Guru for Freelancers screenshot 6" />
-              </div>
-            </div>
-          </div>
-
-          <div class="project-header-row">
-            <div>
-              <div class="project-title">Guru Marketplace</div>
-              <div class="project-meta">
-                Freelancer–employer marketplace · React Native
-              </div>
-              <div class="project-link">
-                <a href="https://play.google.com/store/apps/details?id=com.guru.marketplace" target="_blank">
-                  Guru for Employers (Play Store)
-                </a>
-                <br />
-                <a href="https://play.google.com/store/apps/details?id=com.guru.flmarketplace" target="_blank">
-                  Guru for Freelancers (Play Store)
-                </a>
-              </div>
-            </div>
-            <div class="pill-small">Production</div>
-          </div>
-          <p class="project-meta">
-            Mobile marketplace connecting employers and freelancers with job posting, proposals,
-            messaging, and profile flows optimized for mobile.
-          </p>
-
-          <div class="meta-label">My role & contributions</div>
-          <ul class="project-list">
-            <li>Implemented core user flows for both employer and freelancer apps.</li>
-            <li>Worked on navigation structure, profile screens, and proposal interactions.</li>
-            <li>Collaborated with backend/API teams to integrate and test endpoints.</li>
-          </ul>
-
-          <div class="meta-label">Tech stack</div>
-          <p class="project-meta">
-            React Native · REST APIs · State management · App/Play store deployments
-          </p>
-        </article>
-
-        <!-- Super App -->
-        <article class="project-card">
-          <div class="project-thumb">
-            <div class="thumb-caption">Yelowtaxi – User, Driver & Restaurant apps</div>
-
-            <div class="app-block">
-              <div class="app-block-title">Yelowtaxi – User App</div>
-              <div class="screenshot-strip">
-                <img src="https://play-lh.googleusercontent.com/ngZYPW8xBtFLbFNDGhnpzJYIkrH1zwKcZ5PuOF8_bbIbPUyZc18raE6DvnptgnbGLjU=w5120-h2880-rw" alt="Yelowtaxi User screenshot 1" />
-                <img src="https://play-lh.googleusercontent.com/L5qngW_MalA39xm8aDxIcwLlI1N7JRF8opHtd4bjXZ7etMclEgPVknHgArmWmh6TsDEa=w5120-h2880-rw" alt="Yelowtaxi User screenshot 2" />
-                <img src="https://play-lh.googleusercontent.com/tTxKCiF6tcH_qjyHwnZhtKlrOi0bobnntOTvphjZFp6SbsGrwHx3qYwAVgdz0nketB6A=w5120-h2880-rw" alt="Yelowtaxi User screenshot 3" />
-                <img src="https://play-lh.googleusercontent.com/i87U0WkOTw06WW_cljS1CKkP88DO3PPWrzuf-xERp8TLNLEOlUQfuQ7rM4ZgXta5VkM3=w5120-h2880-rw" alt="Yelowtaxi User screenshot 4" />
-                <img src="https://play-lh.googleusercontent.com/HjQLWOvB9RT5q3pkeJollzVJXg9V_2lCHyH_Jbnvi3JptyYr9JQ9O-i0eAztxgaqSNI=w5120-h2880-rw" alt="Yelowtaxi User screenshot 5" />
-                <img src="https://play-lh.googleusercontent.com/eloaif4U7EaR4gC947HKq7LhnNXDB2j2nNSepYIakhn8rZFthOqXfmAQ-UwGdTOAE34=w5120-h2880-rw" alt="Yelowtaxi User screenshot 6" />
-              </div>
-            </div>
-
-            <div class="app-block">
-              <div class="app-block-title">Yelowtaxi – Driver App</div>
-              <div class="screenshot-strip">
-                <img src="https://play-lh.googleusercontent.com/1GZiER51agGGehl0b2MJkiSmSZXHbkhhCGX2MLlAkXZLXYqPA6O7ucAi052Xe07HBg=w5120-h2880-rw" alt="Yelowtaxi Driver screenshot 1" />
-                <img src="https://play-lh.googleusercontent.com/8q4o8qjindVG4enUIbSnS-XuvZ3i-1tCGK5Q3QOwZsko1GT0XSCnS5FpgZj_aBe148Y=w5120-h2880-rw" alt="Yelowtaxi Driver screenshot 2" />
-                <img src="https://play-lh.googleusercontent.com/hkk9XZpBh7phMue4ujyBeyvwMe_xi4Ymgdh-GTGtaG_cBCeiU8uv8dAzQohAZgCp2dE=w5120-h2880-rw" alt="Yelowtaxi Driver screenshot 3" />
-                <img src="https://play-lh.googleusercontent.com/GNuQVsb58Dl6RmGHUeA7GpuDTGy78mGhKMgciOVDJX4fIW2OmI1a4r6I3l2HcKIwug=w5120-h2880-rw" alt="Yelowtaxi Driver screenshot 4" />
-                <img src="https://play-lh.googleusercontent.com/-asEVhjZoP6Qe2463025AF_wtiYLqiBZhGyTk-igaGciiLefsGmy4zCbEgB1KJfQlQ=w5120-h2880-rw" alt="Yelowtaxi Driver screenshot 5" />
-                <img src="https://play-lh.googleusercontent.com/Mx_2BQWbTKWpQR5FkoHuLxR7YV8f3seHMGFlJgBvSxNOCDGP7x-BVSnPkU4e-x17jHA=w5120-h2880-rw" alt="Yelowtaxi Driver screenshot 6" />
-              </div>
-            </div>
-
-            <div class="app-block">
-              <div class="app-block-title">Yelowtaxi – Restaurant App</div>
-              <div class="screenshot-strip">
-                <img src="https://play-lh.googleusercontent.com/pP-DjP3WWpbFNttXm32GMAKUR4NVmdoOd68VNCOt8SL9OtaaDsRIMFlcetnn61UgHps=w5120-h2880-rw" alt="Yelowtaxi Restaurant screenshot 1" />
-                <img src="https://play-lh.googleusercontent.com/SnwVGqICrI--ohssBENBCDbQ4rhqOiKMg9nR0MwE4tRjF1ie0-TTlhI8Lqa4G69iI-4=w5120-h2880-rw" alt="Yelowtaxi Restaurant screenshot 2" />
-                <img src="https://play-lh.googleusercontent.com/joIDCk2mFdOUjI_omRJUxqCe1rJowUjI4IhDV_wTpNHk4GHwlIB3wKlyjsUpZhRplQ=w5120-h2880-rw" alt="Yelowtaxi Restaurant screenshot 3" />
-                <img src="https://play-lh.googleusercontent.com/tXrx66-4Lt4FhW1LgjWzdNzOM68psJPWwgXXf06VGqNzaNw41xyIcCFpG2PsGM1CdA=w5120-h2880-rw" alt="Yelowtaxi Restaurant screenshot 4" />
-              </div>
-            </div>
-          </div>
-
-          <div class="project-header-row">
-            <div>
-              <div class="project-title">Multi-Service Super App</div>
-              <div class="project-meta">
-                Taxi · Parcel · Food delivery · React Native
-              </div>
-              <div class="project-link">
-                <a href="https://play.google.com/store/apps/details?id=com.yelowsoft.user" target="_blank">
-                  Yelowtaxi – User app
-                </a>
-                <br />
-                <a href="https://play.google.com/store/apps/details?id=com.yelowsoft.driver" target="_blank">
-                  Yelowtaxi – Driver app
-                </a>
-                <br />
-                <a href="https://play.google.com/store/apps/details?id=com.yelowexpress.vendor" target="_blank">
-                  Yelowtaxi – Restaurant app
-                </a>
-              </div>
-            </div>
-            <div class="pill-small">Multi-module</div>
-          </div>
-          <p class="project-meta">
-            On-demand mobility and delivery ecosystem with separate apps for riders, drivers,
-            and restaurants, supporting real-time booking and order flows.
-          </p>
-
-          <div class="meta-label">My role & contributions</div>
-          <ul class="project-list">
-            <li>Contributed to core booking and order flows across user, driver, and restaurant apps.</li>
-            <li>Implemented reusable UI components and screens to keep the codebase consistent.</li>
-            <li>Worked on improving UX in listing, details, and trip/order tracking views.</li>
-          </ul>
-
-          <div class="meta-label">Tech stack</div>
-          <p class="project-meta">
-            React Native · Android · Modular architecture · REST APIs · Maps & location flows
-          </p>
-        </article>
-
-        <!-- Islamic App -->
-        <article class="project-card">
-          <div class="project-thumb">
-            <div class="thumb-caption">Islamic App UI – Quran · Salah · Qibla · Tasbih (concept)</div>
-            <div class="app-block">
-              <div class="screenshot-strip">
-                <img src="https://play-lh.googleusercontent.com/uhsCqq2O5OnaVqcvCVW1H5FHfqVShrr0n547p1rV-82j7rvXgKzdqSgfZ7o3uHRtJ43KwAXM8ph0RQs74CnDxA=w1052-h592-rw" alt="Rehbar App screenshot 1" />
-                <img src="https://play-lh.googleusercontent.com/KqMhyUuxvN3A2hFi47S-JTN-a0RIjw2MZ4_ljdBulkKCKkCG4tLsCbGsg1UJLgaZc4hWNf-7Vbx3KOHOZSRzlA=w1052-h592-rw" alt="Rehbar App screenshot 2" />
-                <img src="https://play-lh.googleusercontent.com/Z7QdvxvGaRG5theouuw5S28SQI_7QUhVDQvqIN8SomalcbTlPc0Y4aEj2BswyCrjbORt9brctVHGIxSG7CHW2rE=w1052-h592-rw" alt="Rehbar App screenshot 3" />
-                <img src="https://play-lh.googleusercontent.com/IWkxfceDHQgGYZgjIiEuW6rzzBDAk8rb7w6xACPz0N4sSbnqCHnCtKLV_vV7VlL7ecVHyXtXYKerJ9Nlo6Jqzg=w1052-h592-rw" alt="Rehbar App screenshot 4" />
-                <img src="https://play-lh.googleusercontent.com/psNIiwVdr3Vv7lBNJnkhQo6eI6AhIPUqc8OCOX5LX9HRnayYsNDoXepMF0wLbCmBb-w2rCEsfO-oXBhtWBWFmcw=w1052-h592-rw" alt="Rehbar App screenshot 5" />
-                <img src="https://play-lh.googleusercontent.com/mAKaFOBYkxeJML3nPnwqsyXw4dkC0YYNYIvM-vVT4xqKfd5puh9302W5C0hGFgTzYidRJbMlqqRB_MEfeMEngsk=w1052-h592-rw" alt="Rehbar App screenshot 6" />
-                <img src="https://play-lh.googleusercontent.com/EE7I4QEFdNdHynFtqaXhVB4RcrdoChC7qdPg-P2iX3RHMQsVWdfHywMCtzREAmADalgrgxa8Ffj2uZeFy-5FDww=w1052-h592-rw" alt="Rehbar App screenshot 7" />
-                <img src="https://play-lh.googleusercontent.com/4HffdGwlv3CXdqmWyTWUkEq43v_7ceM9U_wRFefu_TR4YO2uU8uPSsh3swkVGSRcDYEqM6F03-Q0p_oyzLCFbQ=w1052-h592-rw" alt="Rehbar App screenshot 8" />
-              </div>
-            </div>
-          </div>
-          <div class="project-header-row">
-            <div>
-              <div class="project-title">Islamic Utility App</div>
-              <div class="project-meta">
-                Flutter · GetX · Firebase Firestore
-              </div>
-            </div>
-            <div class="pill-small">In progress</div>
-          </div>
-          <p class="project-meta">
-            A modern Islamic app concept with multiple core utilities – Quran reading,
-            prayer timings, Qibla direction, Tasbih, and Masjid management.
-          </p>
-
-          <div class="meta-label">My role & contributions</div>
-          <ul class="project-list">
-            <li>Designed app structure around multiple Islamic utilities in a single experience.</li>
-            <li>Built animated Tasbih and prayer-time logic using location data (in prototype).</li>
-            <li>Planned Firestore models for Masjid data and user roles.</li>
-          </ul>
-
-          <div class="meta-label">Tech stack</div>
-          <p class="project-meta">
-            Flutter · GetX · Firebase Firestore · Local & cloud data
-          </p>
-        </article>
-
-        <!-- Booking & UI Systems -->
-        <article class="project-card">
-          <div class="project-thumb">
-            <div class="thumb-caption">Salon booking & Figma-style UI concepts</div>
-            <div class="app-block">
-              <div class="screenshot-strip">
-                <span style="font-size:11px; color:var(--muted); padding:4px 2px;">
-                  Experiments with salon slot booking, beauty ecommerce flows,
-                  and a Figma-style editor with multi-theme support.
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="project-header-row">
-            <div>
-              <div class="project-title">Booking & UI Systems</div>
-              <div class="project-meta">
-                Android · SQLite · Firebase · UI/UX
-              </div>
-            </div>
-            <div class="pill-small">Concepts</div>
-          </div>
-          <p class="project-meta">
-            Internal experiments focused on slot booking logic, product listing UX,
-            and reusable design systems for rapid UI-building.
-          </p>
-
-          <div class="meta-label">My role & contributions</div>
-          <ul class="project-list">
-            <li>Designed and built reusable components for calendars, lists, and cards.</li>
-            <li>Tested multi-theme support inspired by design tools like Figma.</li>
-            <li>Optimized layouts for different screen sizes and densities.</li>
-          </ul>
-
-          <div class="meta-label">Tech stack</div>
-          <p class="project-meta">
-            Android · E-commerce · Theming systems · Component-driven UI
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section">
-      <h2 class="section-title">Let’s build something</h2>
-      <p class="section-subtitle">
-        Open to remote roles, freelance projects, and collaborations on mobile apps.
-      </p>
-
-      <div class="contact-card">
-        <div class="contact-main">
-          <strong>Have an idea or project?</strong><br />
-          I can help you design and ship a clean, reliable mobile experience.
-        </div>
-        <div class="contact-links">
-          <a href="mailto:vasimghosi@gmail.com">Email</a>
-          <a href="https://github.com/vasim5" target="_blank">GitHub</a>
-          <a href="https://www.linkedin.com/in/vasim-ghosi-84322b139" target="_blank">LinkedIn</a>
+          <div class="skill-card"><h3>Mobile</h3><p>React Native · Flutter · Dart · JavaScript</p></div>
+          <div class="skill-card"><h3>State & Architecture</h3><p>GetX · Provider · Redux · RxDart</p></div>
+          <div class="skill-card"><h3>Backend & Cloud</h3><p>Firebase · Firestore · Cloud Functions · REST APIs</p></div>
+          <div class="skill-card"><h3>Tools</h3><p>Git · GitHub · Figma · Postman · VS Code</p></div>
         </div>
       </div>
     </section>
 
-    <footer>
-      © <span id="year"></span> Vasim Ghosi · Built with HTML & CSS · Hosted on GitHub Pages
-    </footer>
-  </div>
+    <section id="experience">
+      <div class="container">
+        <div class="section-head"><div class="section-kicker">Experience</div><h2 class="section-title">9+ years of building mobile products.</h2><p class="section-subtitle">Professional experience across marketplace, multi-service, booking and utility applications.</p></div>
+        <div class="timeline">
+          <div class="experience-card">
+            <div class="experience-top"><div><h3>Mobile Application Developer</h3><div class="company">Guru.com</div></div><div class="period">Mobile Engineering</div></div>
+            <ul><li>Worked on both Guru for Employers and Guru for Freelancers mobile applications.</li><li>Built and maintained marketplace workflows, mobile UI, API integrations and production features.</li><li>Contributed to reliable cross-platform experiences for real-world hiring and freelance workflows.</li></ul>
+          </div>
+          <div class="experience-card">
+            <div class="experience-top"><div><h3>React Native Developer</h3><div class="company">Super App / Multi-service Platform</div></div><div class="period">User · Driver · Restaurant</div></div>
+            <ul><li>Worked across the User, Driver and Restaurant/Vendor applications as one connected multi-service ecosystem.</li><li>Implemented workflows involving bookings, orders, maps, live location, dispatch, notifications and service operations.</li><li>Worked on production mobile features and integrations across multiple application roles.</li></ul>
+          </div>
+          <div class="experience-card">
+            <div class="experience-top"><div><h3>React Native & Flutter Development</h3><div class="company">Professional Projects</div></div><div class="period">9+ Years Overall</div></div>
+            <ul><li>9+ years of overall software development experience, with 6+ years focused on React Native and 3+ years on Flutter.</li><li>Built mobile applications across marketplaces, transportation, booking, commerce and utility products.</li><li>Mentored junior developers, reviewed code and helped improve maintainability and delivery quality.</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <script>
-    // Set current year in footer automatically
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Selected work</div>
+          <h2 class="section-title">Apps & products I've worked on.</h2>
+          <p class="section-subtitle">A selection of mobile products across marketplaces, transportation, booking and utility applications.</p>
+        </div>
+
+        <div class="project-grid">
+
+          <!-- Guru -->
+          <article class="project-card">
+
+            <div class="project-gallery full-gallery">
+              <div class="gallery-group"><div class="gallery-label">Guru for Employers · 6 Screenshots</div><div class="gallery-strip"><img src="https://play-lh.googleusercontent.com/yWQvz2b69Nqh9x-7W23Q-GxRNbU5X9VYqHiFip86duLiuFC7Q9u-6iA6U0tAcnuDMJ2FIlG9sx5cd_x11PWA-A=w526-h296" alt="Guru for Employers screenshot 1" loading="eager">
+<img src="https://play-lh.googleusercontent.com/HyPZSlASQhcKy3kSQ_UFBDXtFNCRj20GxLEbcg6DuVx7eTu_Xh-gQlOy0fwFqM18AcMkm6NHGlqo6XwFU6d_lA=w526-h296" alt="Guru for Employers screenshot 2" loading="eager">
+<img src="https://play-lh.googleusercontent.com/TPBGQoxvAxV9MOpbxXQGmKWGX5A1SgctbeyINXrB6hceaxaSH9cYLcnYWMYDWztnZlnO6PdXZ-jBqHRL2dx-9A=w526-h296" alt="Guru for Employers screenshot 3" loading="eager">
+<img src="https://play-lh.googleusercontent.com/zxFtK5lYlsCUyYvkh3RdYkp8fWp-ycCfFLkmkfr8ckkVw3Y_jOLr1K2kogHX3r7iyv9rG7JMYwHz19N43kkN=w526-h296" alt="Guru for Employers screenshot 4" loading="eager">
+<img src="https://play-lh.googleusercontent.com/l_cT-d9kfONPXDEyvOBcNEZDd40_DWJOW6GfNnYiN-Q9sHD6SK-9-KJJCPXjDEIlBbkHcpAmxGjXsDc2MafAwg=w526-h296" alt="Guru for Employers screenshot 5" loading="eager">
+<img src="https://play-lh.googleusercontent.com/7VLY7npRuJ5niIPhBSf9E0WUKvpJs7HD93Ed7QzczWoCni8kLOg0gAO3eS7VIHIAH6TMG8wdnC4Z2MrX5T30=w526-h296" alt="Guru for Employers screenshot 6" loading="eager"></div></div>
+              <div class="gallery-group"><div class="gallery-label">Guru for Freelancers · 6 Screenshots</div><div class="gallery-strip"><img src="https://play-lh.googleusercontent.com/kevUx_3piUlU10-BU6n91axU6JMcaAF2tDV4SDC0Am_h47GngI8QElAZNnB0xIkTY0c-FU0Wa-h5VkJKYL7Z=w526-h296" alt="Guru for Freelancers screenshot 1" loading="eager">
+<img src="https://play-lh.googleusercontent.com/8AGDHUMkL8pQLilATPXIYsYNxsG3s5EG1xZY1XZjqbKn-qHEpN04w9MlrwNc5sTcHhprAUFvdkYDra190Ua6x18=w526-h296" alt="Guru for Freelancers screenshot 2" loading="eager">
+<img src="https://play-lh.googleusercontent.com/c4ra8nwZZ8YtiGQ6oIhkPiSEzTBcrMLXIQOUPWjd1wPk4ceM5M-dL-Y7T7sFAOv6oxAw07GBPmVnG_PF37cX=w526-h296" alt="Guru for Freelancers screenshot 3" loading="eager">
+<img src="https://play-lh.googleusercontent.com/F3oSxavH7NotuZAGjVERHhn24u2_EtLhMD2FAjO4K5esgX6kzBnV4L7qY6ud7eYIqa8CHN_YWt1YND4v9-pX=w526-h296" alt="Guru for Freelancers screenshot 4" loading="eager">
+<img src="https://play-lh.googleusercontent.com/bTeZ8BDXhqkigGFwuOTh092FWBxOZsB9GFGLsYboxRwWEWkPZFHFQ_EQr-9d1RFxBonCHIhmxtbHYc4Gr9d4=w526-h296" alt="Guru for Freelancers screenshot 5" loading="eager">
+<img src="https://play-lh.googleusercontent.com/8wIQ6sHxq9XY50WgMNIy8gJr4_ie6v5fPr5oMJxStIUQHH7UtbcGa3iKHqq2FGSRDzIFJsYwoLMzmiI1XoZUluQ=w526-h296" alt="Guru for Freelancers screenshot 6" loading="eager"></div></div>
+            </div>
+            <div class="project-content"><div class="project-type">React Native · Marketplace</div><h3>Guru Marketplace</h3><p>Worked on Guru's marketplace applications for both Employers and Freelancers, covering job posting, search, hiring, work management, communication and secure payment workflows.</p><div class="stack"><span>React Native</span><span>REST APIs</span><span>Firebase</span><span>Marketplace</span></div>
+              <div class="project-links">
+                <a href="https://play.google.com/store/apps/details?id=com.guru.marketplace" target="_blank" rel="noopener">Employer App ↗</a>
+                <a href="https://play.google.com/store/apps/details?id=com.guru.flmarketplace" target="_blank" rel="noopener">Freelancer App ↗</a>
+              </div>
+            </div>
+          </article>
+          <!-- Super App: User + Driver + Restaurant -->
+          <article class="project-card">
+
+            <div class="project-gallery full-gallery">
+              <div class="gallery-group"><div class="gallery-label">User App · 7 Screenshots</div><div class="gallery-strip"><img src="https://play-lh.googleusercontent.com/kZXW7LmF_4gikSwRkkzhIR3z5gd5-HSl3BWKsMekrwROjEn7egnpdKicix2taTIlKeXYK65dSf32C63TVOHc=w526-h296" alt="Super App User screenshot 1" loading="eager">
+<img src="https://play-lh.googleusercontent.com/KOEg4MQoJwzba1rCZekDT4u2a_e7tNhZY8JXRtvx4zn03MG1uyvXp8eTUUmlXFLRM4I1efsWO83yMBVotgBy3g=w526-h296" alt="Super App User screenshot 2" loading="eager">
+<img src="https://play-lh.googleusercontent.com/HnYBSwDMmAXD3kHRSoPN7BlZEKPaCL4_01j3tc2V-ot8kej6zUDsHUUJ6PH7VWJMuWWJ6FdT77n5zIu-E1DR=w526-h296" alt="Super App User screenshot 3" loading="eager">
+<img src="https://play-lh.googleusercontent.com/6SgKUxyhpzS2GzBblVdCiyASslCcgZsBuGX8QqLDSMLZ3CzVTvIMeJOU_C5miX0M1Byh0rXlZF1VJVZAXIXm=w526-h296" alt="Super App User screenshot 4" loading="eager">
+<img src="https://play-lh.googleusercontent.com/X_jCBcimPLb1b5-en-tHCFQk2fn-n5FemLmS5KlApzJ-bOOnaaMPCdBg9lXx9j7dC0W27-_C8ZbEd5J9vtLr=w526-h296" alt="Super App User screenshot 5" loading="eager">
+<img src="https://play-lh.googleusercontent.com/NhTNlTX8bqzqrrwkFnUPVKHM1_Vgjc0Koiu8KM2ml75toLek7Q-w5hO602LMHVEssNg4i_sTNVFq4Y0jjeaXOQ=w526-h296" alt="Super App User screenshot 6" loading="eager">
+<img src="https://play-lh.googleusercontent.com/iGLssq4SglgIiItTUC2DMoCx-XhyIOB4tefEFxWdKW9XOZikWu7rSHhiLL1O-CD-aqsGZvfju54Nnb2QdEGA_Q=w526-h296" alt="Super App User screenshot 7" loading="eager"></div></div>
+              <div class="gallery-group"><div class="gallery-label">Driver App · 7 Screenshots</div><div class="gallery-strip"><img src="https://play-lh.googleusercontent.com/GThA8rj7zd6HJ98sOjDBFzkPKZSl3t8gi3g7DMXUdf3wb6yzzb98KUCvHGj2o8XCjnA=w526-h296" alt="Super App Driver screenshot 1" loading="eager">
+<img src="https://play-lh.googleusercontent.com/DqvB-4dGt-ExDQVXnZ4s3r0lx7-1tIMwLiYUmpy7k3-CSdLICwxuFFzbo67x4KprYpQ=w526-h296" alt="Super App Driver screenshot 2" loading="eager">
+<img src="https://play-lh.googleusercontent.com/1GZiER51agGGehl0b2MJkiSmSZXHbkhhCGX2MLlAkXZLXYqPA6O7ucAi052Xe07HBg=w526-h296" alt="Super App Driver screenshot 3" loading="eager">
+<img src="https://play-lh.googleusercontent.com/8q4o8qjindVG4enUIbSnS-XuvZ3i-1tCGK5Q3QOwZsko1GT0XSCnS5FpgZj_aBe148Y=w526-h296" alt="Super App Driver screenshot 4" loading="eager">
+<img src="https://play-lh.googleusercontent.com/hkk9XZpBh7phMue4ujyBeyvwMe_xi4Ymgdh-GTGtaG_cBCeiU8uv8dAzQohAZgCp2dE=w526-h296" alt="Super App Driver screenshot 5" loading="eager">
+<img src="https://play-lh.googleusercontent.com/GNuQVsb58Dl6RmGHUeA7GpuDTGy78mGhKMgciOVDJX4fIW2OmI1a4r6I3l2HcKIwug=w526-h296" alt="Super App Driver screenshot 6" loading="eager">
+<img src="https://play-lh.googleusercontent.com/-asEVhjZoP6Qe2463025AF_wtiYLqiBZhGyTk-igaGciiLefsGmy4zCbEgB1KJfQlQ=w526-h296" alt="Super App Driver screenshot 7" loading="eager"></div></div>
+              <div class="gallery-group"><div class="gallery-label">Restaurant / Vendor App · 6 Screenshots</div><div class="gallery-strip"><img src="https://play-lh.googleusercontent.com/WQTuNmZffaLHMYygNrI2xcQc96GFmpXlfIgiGqndJRkqriOstK1oWDxq7PkJ2XO6JnYBj8brblx4tif049FNQA=w526-h296" alt="Super App Restaurant screenshot 1" loading="eager">
+<img src="https://play-lh.googleusercontent.com/1YoJrh--bxAFHanm_RoVMBNylq1I6RQb181W5bImXHOLD96hXgHOSrlSeYHga2YttrxauA4DQGpIYtex2XMWuHw=w526-h296" alt="Super App Restaurant screenshot 2" loading="eager">
+<img src="https://play-lh.googleusercontent.com/pqXDi4mmIBBW5g72SNYpZaHG5ysXsMuvEnoInqWPQ6bz3oSO6Vo2IUqHjTirztt2kbfJTLk3H4DPEIzQ-TS0vQ=w526-h296" alt="Super App Restaurant screenshot 3" loading="eager">
+<img src="https://play-lh.googleusercontent.com/4FrKvZnosu3Xwn4gFOmwvCUwqtDnFZAWh0VDA602ubsw_Ed0697am0zpIg6Sv-oESUFuvIizt0gEqSJ7pvRQKbs=w526-h296" alt="Super App Restaurant screenshot 4" loading="eager">
+<img src="https://play-lh.googleusercontent.com/VLF8FR2YB8nH4p8Etv-yA5x2LzbLpsHIZ9JaNGPNAtBTEdUtXMlGW4y_Xz-W_zcPwDzf5rnh8LG-znMEaMPD=w526-h296" alt="Super App Restaurant screenshot 5" loading="eager">
+<img src="https://play-lh.googleusercontent.com/WmR3cPJ2KuHkQoAT4jTOCNmRgiPzeiib8lRRl4UmMkv7Etufo7HWex56jjem2jvqkpkviK4sVXQdxF4ashCAG_o=w526-h296" alt="Super App Restaurant screenshot 6" loading="eager"></div></div>
+            </div>
+            <div class="project-content">
+              <div class="project-type">React Native · Multi-service Super App</div>
+              <h3>Super App</h3>
+              <p>A multi-service ecosystem combining User, Driver and Restaurant/Vendor applications for ride booking, food ordering, dispatch, live trip tracking, payments, ratings and restaurant order management.</p>
+              <div class="stack"><span>React Native</span><span>Maps</span><span>Location</span><span>Notifications</span><span>Payments</span><span>Food Delivery</span></div>
+              <div class="project-links">
+                <a href="https://play.google.com/store/apps/details?id=com.yelowsoft.user" target="_blank" rel="noopener">User App ↗</a>
+                <a href="https://play.google.com/store/apps/details?id=com.yelowsoft.driver" target="_blank" rel="noopener">Driver App ↗</a>
+                <a href="https://play.google.com/store/apps/details?id=com.yelowexpress.vendor" target="_blank" rel="noopener">Restaurant / Vendor ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Salon -->
+          <article class="project-card">
+            <div class="project-content"><div class="project-type">React Native · Booking & Commerce</div><h3>Salon Booking & Beauty Products</h3><p>Mobile product experience combining salon/service booking with beauty product browsing and commerce workflows.</p><div class="stack"><span>React Native</span><span>Booking</span><span>E-commerce</span><span>REST APIs</span></div></div>
+          </article>
+
+
+          <!-- Rehbar -->
+          <article class="project-card">
+            <div class="project-gallery"><div class="gallery-group"><div class="gallery-label">Rehbar App · 8 Screenshots</div><div class="gallery-strip"><img src="https://play-lh.googleusercontent.com/uhsCqq2O5OnaVqcvCVW1H5FHfqVShrr0n547p1rV-82j7rvXgKzdqSgfZ7o3uHRtJ43KwAXM8ph0RQs74CnDxA=w1052-h592-rw" alt="Rehbar App screenshot 1" loading="eager">
+              <img src="https://play-lh.googleusercontent.com/KqMhyUuxvN3A2hFi47S-JTN-a0RIjw2MZ4_ljdBulkKCKkCG4tLsCbGsg1UJLgaZc4hWNf-7Vbx3KOHOZSRzlA=w1052-h592-rw" alt="Rehbar App screenshot 2" loading="eager">
+              <img src="https://play-lh.googleusercontent.com/Z7QdvxvGaRG5theouuw5S28SQI_7QUhVDQvqIN8SomalcbTlPc0Y4aEj2BswyCrjbORt9brctVHGIxSG7CHW2rE=w1052-h592-rw" alt="Rehbar App screenshot 3" loading="eager">
+              <img src="https://play-lh.googleusercontent.com/IWkxfceDHQgGYZgjIiEuW6rzzBDAk8rb7w6xACPz0N4sSbnqCHnCtKLV_vV7VlL7ecVHyXtXYKerJ9Nlo6Jqzg=w1052-h592-rw" alt="Rehbar App screenshot 4" loading="eager">
+              <img src="https://play-lh.googleusercontent.com/psNIiwVdr3Vv7lBNJnkhQo6eI6AhIPUqc8OCOX5LX9HRnayYsNDoXepMF0wLbCmBb-w2rCEsfO-oXBhtWBWFmcw=w1052-h592-rw" alt="Rehbar App screenshot 5" loading="eager">
+              <img src="https://play-lh.googleusercontent.com/mAKaFOBYkxeJML3nPnwqsyXw4dkC0YYNYIvM-vVT4xqKfd5puh9302W5C0hGFgTzYidRJbMlqqRB_MEfeMEngsk=w1052-h592-rw" alt="Rehbar App screenshot 6" loading="eager">
+              <img src="https://play-lh.googleusercontent.com/EE7I4QEFdNdHynFtqaXhVB4RcrdoChC7qdPg-P2iX3RHMQsVWdfHywMCtzREAmADalgrgxa8Ffj2uZeFy-5FDww=w1052-h592-rw" alt="Rehbar App screenshot 7" loading="eager">
+              <img src="https://play-lh.googleusercontent.com/4HffdGwlv3CXdqmWyTWUkEq43v_7ceM9U_wRFefu_TR4YO2uU8uPSsh3swkVGSRcDYEqM6F03-Q0p_oyzLCFbQ=w1052-h592-rw" alt="Rehbar App screenshot 8" loading="eager"></div></div></div>
+            <div class="project-content"><div class="project-type">Flutter · Live App</div><h3>Rehbar — Islamic Utility App</h3><p>A comprehensive Flutter utility app with Quran, Salah timings, Qibla, Tasbih, Hadith, Duas, mosques, Zakat and many other daily utilities.</p><div class="stack"><span>Flutter</span><span>GetX</span><span>Firebase</span><span>Maps</span><span>Notifications</span></div>
+              <div class="project-links">
+                <a href="https://play.google.com/store/apps/details?id=com.app.rehbar" target="_blank" rel="noopener">Rehbar ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact">
+          <h2>Let's build something useful.</h2>
+          <p>Interested in working together or discussing a mobile product? Feel free to get in touch.</p>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:vasimghosi@gmail.com">vasimghosi@gmail.com</a>
+            <a class="contact-link" href="https://www.linkedin.com/in/vasim-ghosi-84322b139" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="contact-link" href="https://github.com/vasim5" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+        <footer>© 2026 Vasim Ghosi · Mobile App Developer</footer>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
